@@ -4,6 +4,7 @@ readonly Python_would_be_installed=true
 readonly NodeJS_would_be_installed=true
 readonly Java_would_be_installed=true
 readonly Golang_would_be_installed=true
+readonly Swift_would_be_installed=true
 readonly AWS_SDK_FOR_CPP_would_be_installed=false
 readonly PostgreSQL_would_be_installed=true
 readonly GoogleChrome_would_be_installed=false
@@ -152,6 +153,19 @@ if "${Golang_would_be_installed}" ; then
     tar -C /usr/local -xzf go1.15.linux-amd64.tar.gz
     echo 'export PATH=${PATH}:/usr/local/go/bin' >> ~/.bashrc
     check_status $?
+fi
+
+#######################################################
+# Swift
+#######################################################
+
+if "${Swift_would_be_installed}" ; then
+    cd ~
+    sudo apt install clang libicu-dev libcurl4-openssl-dev libssl-dev -y
+    wget https://swift.org/builds/swift-5.2.5-release/ubuntu2004/swift-5.2.5-RELEASE/swift-5.2.5-RELEASE-ubuntu20.04.tar.gz
+    tar xzvf swift-5.2.5-RELEASE-ubuntu20.04.tar.gz
+    mv swift-5.2.5-RELEASE-ubuntu20.04.tar.gz /usr/local/bin/swift
+    echo "export PATH=${PATH}:/usr/local/bin/swift/usr/bin/swift" >> ~/.bashrc
 fi
 
 #######################################################
