@@ -139,7 +139,7 @@ if "${NodeJS_would_be_installed}" ; then
     apt purge nodejs npm -y && apt autoremove -y
     check_status $?
     npm install -g aws-sdk aws-cdk express express-generator npm-add-dependencies \
-        pg typescript @vue/cli
+        pg typescript @vue/cli @aws-amplify/cli
     check_status $?
     echo "export NODE_PATH=$(npm root -g)" >> ~/.bashrc && source ~/.bashrc
 fi
