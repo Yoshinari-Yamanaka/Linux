@@ -26,7 +26,7 @@ cd ~
 sudo apt update -y && sudo apt install build-essential -y
 check_status $?
 
-apt install -y cmake cmake-curses-gui jq tree nfs-common unzip
+apt install -y cmake cmake-curses-gui jq tree nfs-common unzip zsh
 
 #######################################################
 # git-secrets
