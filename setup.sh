@@ -41,6 +41,10 @@ sudo make test
 sudo make install
 check_status $?
 
+# apply OpenSSL to specified user
+# export LD_LIBRARY_PATH=/usr/local/openssl-1.1.1/lib
+
+# apply OpenSSL to System mode
 sudo echo "/usr/local/openssl-1.1.1/lib" > /etc/ld.so.conf.d/openssl-1.1.1.conf
 sudo ldconfig
 sudo ldconfig -p | grep libssl
