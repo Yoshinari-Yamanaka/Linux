@@ -59,6 +59,11 @@ tar xvf cmake-3.6.2.tar.gz
 ./configure && make && make install
 
 #######################################################
+# Mosquitto
+#######################################################
+sudo apt install -y mosquitto
+
+#######################################################
 # others tools
 #######################################################
 apt install -y jq tree nfs-common unzip zsh
