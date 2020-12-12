@@ -30,21 +30,23 @@ check_status $?
 #######################################################
 # OpenSSL
 #######################################################
-sudo curl https://www.openssl.org/source/openssl-1.1.1.tar.gz -o /usr/local/src/openssl-1.1.1.tar.gz
-cd /usr/local/src
-sudo tar xvzf openssl-1.1.1.tar.gz
-cd openssl-1.1.1/
-sudo ./config --prefix=/usr/local/openssl-1.1.1 shared zlib
-sudo make depend
-sudo make
-sudo make test
-sudo make install
-check_status $?
+cd ~
+sudo apt install -y openssl
+# sudo curl https://www.openssl.org/source/openssl-1.1.1.tar.gz -o /usr/local/src/openssl-1.1.1.tar.gz
+# cd /usr/local/src
+# sudo tar xvzf openssl-1.1.1.tar.gz
+# cd openssl-1.1.1/
+# sudo ./config --prefix=/usr/local/openssl-1.1.1 shared zlib
+# sudo make depend
+# sudo make
+# sudo make test
+# sudo make install
+# check_status $?
 
 # apply OpenSSL to specified user
 # Since Ubuntu 9.04 Jaunty Jackalope, LD_LIBRARY_PATH cannot be set in $HOME/.profile, /etc/profile, nor /etc/environment files. You must use /etc/ld.so.conf.d/*.conf configuration files.
-echo "export LD_LIBRARY_PATH=/usr/local/openssl-1.1.1/lib" >> ~/.bashrc
-source ~/.bashrc
+# echo "export LD_LIBRARY_PATH=/usr/local/openssl-1.1.1/lib" >> ~/.bashrc
+# source ~/.bashrc
 
 # apply OpenSSL to the shared libraries
 # sudo echo "/usr/local/openssl-1.1.1/lib" > /etc/ld.so.conf.d/openssl-1.1.1.conf
