@@ -43,12 +43,12 @@ check_status $?
 
 # apply OpenSSL to specified user
 # Since Ubuntu 9.04 Jaunty Jackalope, LD_LIBRARY_PATH cannot be set in $HOME/.profile, /etc/profile, nor /etc/environment files. You must use /etc/ld.so.conf.d/*.conf configuration files.
-# export LD_LIBRARY_PATH=/usr/local/openssl-1.1.1/lib
+echo "export LD_LIBRARY_PATH=/usr/local/openssl-1.1.1/lib" >> ~/.bashrc
 
 # apply OpenSSL to the shared libraries
-sudo echo "/usr/local/openssl-1.1.1/lib" > /etc/ld.so.conf.d/openssl-1.1.1.conf
-sudo ldconfig
-sudo ldconfig -p | grep libssl
+# sudo echo "/usr/local/openssl-1.1.1/lib" > /etc/ld.so.conf.d/openssl-1.1.1.conf
+# sudo ldconfig
+# sudo ldconfig -p | grep libssl
 
 #######################################################
 # cmake
