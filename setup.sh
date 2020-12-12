@@ -1,15 +1,16 @@
 #!/bin/bash
-readonly Docker_would_be_installed=true
-readonly Python_would_be_installed=true
-readonly NodeJS_would_be_installed=true
-readonly Java_would_be_installed=true
-readonly Golang_would_be_installed=true
-readonly Swift_would_be_installed=true
-readonly AWS_SDK_FOR_CPP_would_be_installed=false
-readonly PostgreSQL_would_be_installed=true
-readonly GoogleChrome_would_be_installed=false
+readonly Docker_would_be_installed=true 2> /dev/null
+readonly Python_would_be_installed=true 2> /dev/null
+readonly NodeJS_would_be_installed=true 2> /dev/null
+readonly Java_would_be_installed=true 2> /dev/null
+readonly Golang_would_be_installed=true 2> /dev/null
+readonly Swift_would_be_installed=true 2> /dev/null
+readonly AWS_SDK_FOR_CPP_would_be_installed=false 2> /dev/null
+readonly PostgreSQL_would_be_installed=true 2> /dev/null
+readonly GoogleChrome_would_be_installed=false 2> /dev/null
 
-function check_status (){
+function check_status ()
+{
     if [ $1 -ne 0 ] ; then
         touch ~/failure.txt
         echo "${FUNCNAME[0]} function called" >> ~/failure.txt
@@ -26,6 +27,27 @@ cd ~
 sudo apt update -y && sudo apt install build-essential -y
 check_status $?
 
+#######################################################
+# OpenSSL
+#######################################################
+sudo curl https://www.openssl.org/source/openssl-1.1.1.tar.gz -o /usr/local/src/openssl-1.1.1.tar.gz
+cd /usr/local/src
+sudo tar xvzf openssl-1.1.1.tar.gz
+cd openssl-1.1.1/
+sudo ./config --prefix=/usr/local/openssl-1.1.1 shared zlib
+sudo make depend
+sudo make
+sudo make test
+sudo make install
+check_status $?
+
+sudo echo "/usr/local/openssl-1.1.1/lib" > /etc/ld.so.conf.d/openssl-1.1.1.conf
+sudo ldconfig
+sudo ldconfig -p | grep libssl
+
+#######################################################
+# cmake
+#######################################################
 apt install -y cmake cmake-curses-gui jq tree nfs-common unzip zsh
 
 #######################################################
