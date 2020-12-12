@@ -53,7 +53,15 @@ sudo ldconfig -p | grep libssl
 #######################################################
 # cmake
 #######################################################
-apt install -y cmake cmake-curses-gui jq tree nfs-common unzip zsh
+cd ~
+wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz --no-check-certificate
+tar xvf cmake-3.6.2.tar.gz
+./configure && make && make install
+
+#######################################################
+# others tools
+#######################################################
+apt install -y jq tree nfs-common unzip zsh
 
 #######################################################
 # git-secrets
