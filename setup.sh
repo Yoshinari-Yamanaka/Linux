@@ -9,6 +9,8 @@ readonly AWS_SDK_FOR_CPP_would_be_installed=false 2> /dev/null
 readonly PostgreSQL_would_be_installed=true 2> /dev/null
 readonly GoogleChrome_would_be_installed=false 2> /dev/null
 
+DEBIAN_FRONTEND=noninteractive
+
 function check_status ()
 {
     if [ $1 -ne 0 ] ; then
