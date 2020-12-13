@@ -59,11 +59,10 @@ sudo apt install -y openssl
 # cmake
 #######################################################
 cd ~
-apt install -y cmake
-# wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz --no-check-certificate
-# tar xvf cmake-3.6.2.tar.gz
-# cd ~/cmake-3.6.2
-# ./configure && make && make install
+wget https://cmake.org/files/v3.2/cmake-3.2.0.tar.gz
+tar xvf cmake-3.2.0.tar.gz
+cd cmake-3.2.0/
+./configure && make && sudo make install
 
 #######################################################
 # Mosquitto
