@@ -58,9 +58,9 @@ cd ~
 # cmake
 #######################################################
 cd ~
-wget https://cmake.org/files/v3.2/cmake-3.2.0.tar.gz
-tar xvf cmake-3.2.0.tar.gz
-cd cmake-3.2.0/
+wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
+tar xvf cmake-3.6.2.tar.gz
+cd cmake-3.6.2/
 ./configure && make && sudo make install
 
 #######################################################
