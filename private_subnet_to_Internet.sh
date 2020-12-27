@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ks ~/.ssh/key_pair.pem
+ls ~/.ssh/key_pair.pem
 if [ $? -ne 0 ] ; then
     exit 255
 fi
