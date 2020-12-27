@@ -5,6 +5,9 @@ if [ $? -ne 0 ] ; then
     exit 255
 fi
 
+##################################################################
+# Check it out that You've logined to the instance in the public subnet
+##################################################################
 
 public_instance_ip=""
 private_instance_ip=""
