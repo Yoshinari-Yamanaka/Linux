@@ -11,5 +11,5 @@ function response()
 }
 
 while true; do
-    response | nc -l ${PORT} -w 10
+    response | sudo nc -l ${PORT} -w 10
 done
