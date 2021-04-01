@@ -86,16 +86,19 @@ check_status $?
 #######################################################
 if "${Docker_would_be_installed}" ; then
     cd ~
-    sudo apt-get install -y \
+    sudo apt install -y \
         apt-transport-https \
         ca-certificates \
         curl \
-        gnupg-agent \
-        software-properties-common
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        gnupg \
+        lsb-release
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    # x86_64 / amd64
+    echo \
+        "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+        $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get update -y
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
     check_status $?
     echo "service docker start" >> ~/.bashrc && source ~/.bashrc
 fi
@@ -140,18 +143,18 @@ if "${AWS_SDK_FOR_CPP_would_be_installed}"; then
 fi
 
 #######################################################
-# Python3.8.3
+# Python3.9.2
 #######################################################
 if "${Python_would_be_installed}" ; then
     cd ~
     #install "dependencies"
     apt install -y libreadline-dev libncursesw5-dev libssl-dev libsqlite3-dev libgdbm-dev libbz2-dev liblzma-dev zlib1g-dev uuid-dev libffi-dev libdb-dev
-    #install "Python3.8.3" from "python.org"
-    wget https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz && tar -xf Python-3.8.3.tar.xz && cd Python-3.8.3 && \
+    #install "Python3.9.2" from "python.org"
+    wget https://www.python.org/ftp/python/3.9.2/Python-3.9.2.tar.xz && tar -xf Python-3.9.2.tar.xz && cd Python-3.9.2 && \
     ./configure --enable-optimizations && make -s -j4 && make altinstall
     check_status $?
     #set "python" Symbolic link
-    tmp="$(which python3.8)"
+    tmp="$(which python3.9)"
     ln -s ${tmp} "${tmp%/*}/python"
     python --version
     check_status $?
