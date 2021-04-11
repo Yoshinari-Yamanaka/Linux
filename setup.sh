@@ -174,9 +174,9 @@ if "${Python_would_be_installed}" ; then
     pip install --upgrade pip
     #install Python libraries
     apt install libpq-dev -y
-    pip install awscli beautifulsoup4 boto3 coverage django flask flask-cors gunicorn gspread \ 
-        numpy openpyxl pandas requests pipdeptree psycopg2 pyarrow pycrypto pyorc pyspark \
-        pytest python-dotenv selenium scikit-learn scipy uWSGI xlrd xlwt
+    pip install awscli beautifulsoup4 boto3 coverage django flask flask-cors gunicorn gspread
+    pip install numpy openpyxl pandas requests pipdeptree psycopg2 pyarrow pycrypto pyorc pyspark
+    pip install pytest python-dotenv selenium scikit-learn scipy uWSGI xlrd xlwt
 fi
 
 #######################################################
@@ -188,8 +188,8 @@ if "${NodeJS_would_be_installed}" ; then
     npm install n -g && n stable && \
     apt purge nodejs npm -y && apt autoremove -y
     check_status $?
-    npm install -g aws-sdk aws-cdk express express-generator \
-        pg typescript @vue/cli @aws-amplify/cli node-fetch
+    npm install -g aws-sdk aws-cdk express express-generator
+    npm install -g pg typescript @vue/cli @aws-amplify/cli node-fetch
     check_status $?
     echo "export NODE_PATH=$(npm root -g)" >> ~/.bashrc && source ~/.bashrc
 fi
@@ -240,11 +240,17 @@ if "${PostgreSQL_would_be_installed}"; then
     apt purge -y gpg && apt install -y ca-certificates gnupg1 && \
     curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
     check_status $?
+
     #You may determine the codename of your distribution by running lsb_release -c
     sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
     check_status $?
+
+    # Enable pgadmin4
+    sudo curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+    sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+
     #install "PostgreSQL 12"
-    apt update -y 
+    apt update -y
     apt install -y postgresql-12 pgadmin4
     check_status $?
     echo "service postgresql start" >> ~/.bashrc && source ~/.bashrc
