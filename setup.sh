@@ -33,7 +33,7 @@ check_status $?
 # OpenSSL
 #######################################################
 cd ~
-# sudo apt install -y openssl
+sudo apt install -y openssl
 # sudo curl https://www.openssl.org/source/old/1.0.2/openssl-1.0.2u.tar.gz
 # sudo tar xvzf openssl-1.0.2u.tar.gz
 # cd openssl-1.0.2u/
@@ -58,10 +58,11 @@ cd ~
 # cmake
 #######################################################
 cd ~
-wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
-tar xvf cmake-3.6.2.tar.gz
-cd cmake-3.6.2/
-./configure && make && sudo make install
+apt install -y cmake
+# wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
+# tar xvf cmake-3.6.2.tar.gz
+# cd cmake-3.6.2/
+# ./configure && make && sudo make install
 
 #######################################################
 # Mosquitto
