@@ -45,8 +45,6 @@ Services >  OpenSSH Authentication Agent > Properties > General > Startup type >
 
 # PostgreSQL
 
-change OS user password
-
 ```
 ~# passwd postgres
 ~# sudo su postgres
