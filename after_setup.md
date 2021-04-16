@@ -42,3 +42,18 @@ Services >  OpenSSH Authentication Agent > Properties > General > Startup type >
 #  Git Secrets
 
 ~$ git secrets --register-aws --global
+
+# PostgreSQL
+
+change OS user password
+
+```
+~# passwd postgres
+~# sudo su postgres
+~# psql
+
+postgres=# alter role postgres with password '***Your password***';
+postgres=# \q
+
+~# service postgresql start
+```
