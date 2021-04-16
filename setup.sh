@@ -46,7 +46,7 @@ sudo apt install -y openssl
 
 # apply OpenSSL to specified user
 # Since Ubuntu 9.04 Jaunty Jackalope, LD_LIBRARY_PATH cannot be set in $HOME/.profile, /etc/profile, nor /etc/environment files. You must use /etc/ld.so.conf.d/*.conf configuration files.
-# echo "export LD_LIBRARY_PATH=/usr/local/openssl-1.1.1/lib" >> ~/.bashrc
+# echo 'export LD_LIBRARY_PATH=/usr/local/openssl-1.1.1/lib' >> ~/.bashrc
 # source ~/.bashrc
 
 # apply OpenSSL to the shared libraries
@@ -140,7 +140,7 @@ if "${AWS_SDK_FOR_CPP_would_be_installed}"; then
     make && make install
 
     check_status $?
-    echo "export CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:~/aws_sdk_for_cpp" >> ~/.bashrc
+    echo 'export CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:~/aws_sdk_for_cpp' >> ~/.bashrc
 fi
 
 #######################################################
