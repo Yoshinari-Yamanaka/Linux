@@ -201,7 +201,7 @@ if "${Golang_would_be_installed}" ; then
     cd ~
     wget https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz
     tar -C /usr/local -xzf go1.11.5.linux-amd64.tar.gz
-    echo "export PATH=${PATH}:/usr/local/go/bin" >> ~/.bashrc
+    echo 'export PATH=${PATH}:/usr/local/go/bin' >> ~/.bashrc
     check_status $?
 fi
 
@@ -215,7 +215,7 @@ if "${Swift_would_be_installed}" ; then
     wget https://swift.org/builds/swift-5.2.5-release/ubuntu2004/swift-5.2.5-RELEASE/swift-5.2.5-RELEASE-ubuntu20.04.tar.gz
     tar xzvf swift-5.2.5-RELEASE-ubuntu20.04.tar.gz
     mv swift-5.2.5-RELEASE-ubuntu20.04.tar.gz /usr/local/bin/swift
-    echo "export PATH=${PATH}:/usr/local/bin/swift/usr/bin/swift" >> ~/.bashrc
+    echo 'export PATH=${PATH}:/usr/local/bin/swift/usr/bin/swift' >> ~/.bashrc
 fi
 
 #######################################################
