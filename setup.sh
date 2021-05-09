@@ -30,6 +30,13 @@ sudo apt update -y && sudo apt install build-essential -y
 check_status $?
 
 #######################################################
+# Other useful libraries
+#######################################################
+sudo apt install -y libssl-dev libcurl4-openssl-dev liblog4cxx-dev \
+                libprotobuf-dev libboost-all-dev  libgtest-dev google-mock \
+                protobuf-compiler python-setuptools
+
+#######################################################
 # OpenSSL
 #######################################################
 cd ~
@@ -58,11 +65,11 @@ sudo apt install -y openssl
 # cmake
 #######################################################
 cd ~
-apt install -y cmake
-# wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
-# tar xvf cmake-3.6.2.tar.gz
-# cd cmake-3.6.2/
-# ./configure && make && sudo make install
+wget https://cmake.org/files/v3.20/cmake-3.20.0.tar.gz
+tar zxvf cmake-3.20.0.tar.gz
+cd cmake-3.20.0/
+./configure && make && sudo make install
+check_status $?
 
 #######################################################
 # Mosquitto
