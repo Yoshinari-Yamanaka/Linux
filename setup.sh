@@ -35,6 +35,7 @@ check_status $?
 sudo apt install -y libssl-dev libcurl4-openssl-dev liblog4cxx-dev \
                 libprotobuf-dev libboost-all-dev  libgtest-dev google-mock \
                 protobuf-compiler python-setuptools
+sudo apt install -y clang-tidy clang-format
 
 #######################################################
 # OpenSSL
