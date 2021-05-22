@@ -5,7 +5,7 @@
 ~$ git config --global user.name  #write User name
 ~$ git config --global user.email #write User email
 ~$ git config --global push.default simple
-~$ git config --global core.sshCommand "C:/Windows/System32/OpenSSH/ssh.exe"
+~$ git config --global core.sshcommand $(which ssh)
 ```
 
 Services >  OpenSSH Authentication Agent > Properties > General > Startup type > Automatic
