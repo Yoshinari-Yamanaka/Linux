@@ -20,15 +20,22 @@ Services >  OpenSSH Authentication Agent > Properties > General > Startup type >
     Enter passphrase (empty for no passphrase):
     Enter same passphrase again:
 
+# GitHub & CodeCommit
 ~$ vim ~/.ssh/config
-    Host github github.com
+Host github github.com
     HostName github.com
-    IdentityFile ~/.ssh/"Your file name"
+    IdentityFile ~/.ssh/"private ssh file"
     User git
-    #https://github.com/settings/keys
-    #add SSH key
-    #clip < ~/.ssh/"Your file name" (Windows)
-    #pbcopy < ~/.ssh/"Your file name" (Mac)
+
+Host git-codecommit.*.amazonaws.com
+    User "SSH Key ID Check your AWS Console"
+    IdentityFile ~/.ssh/"private ssh file"
+
+# useful tool for copy & and paste
+# https://github.com/settings/keys
+# add SSH key
+# clip < ~/.ssh/"Your file name" (Windows)
+# pbcopy < ~/.ssh/"Your file name" (Mac)
 
 ~$ ssh -T git@github.com
     #Hi XXX! You've successfully authenticated, but GitHub does not provide shell access.
