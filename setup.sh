@@ -182,9 +182,9 @@ if "${Python_would_be_installed}" ; then
     pip install --upgrade pip
     #install Python libraries
     apt install libpq-dev -y
-    pip install awscli beautifulsoup4 boto3 coverage django flask flask-cors gunicorn gspread
-    pip install numpy openpyxl pandas requests pipdeptree psycopg2 pyarrow pycrypto pyorc pyspark
-    pip install pytest python-dotenv selenium scikit-learn scipy uWSGI xlrd xlwt
+    # pip install awscli beautifulsoup4 boto3 coverage django flask flask-cors gunicorn gspread
+    # pip install numpy openpyxl pandas requests pipdeptree psycopg2 pyarrow pycrypto pyorc pyspark
+    # pip install pytest python-dotenv selenium scikit-learn scipy uWSGI xlrd xlwt
 fi
 
 #######################################################
@@ -195,9 +195,6 @@ if "${NodeJS_would_be_installed}" ; then
     apt install nodejs npm -y && \
     npm install n -g && n stable && \
     apt purge nodejs npm -y && apt autoremove -y
-    check_status $?
-    npm install -g aws-sdk aws-cdk express express-generator
-    npm install -g pg typescript @vue/cli @aws-amplify/cli node-fetch
     check_status $?
     echo "export NODE_PATH=$(npm root -g)" >> ~/.bashrc && source ~/.bashrc
 fi
@@ -232,7 +229,7 @@ fi
 if "${Java_would_be_installed}" ; then
     cd ~
     apt search openjdk-\(\.\)\+-jdk$
-    apt install openjdk-11-jdk -y && \
+    apt install openjdk-14-jdk -y && \
     java --version && javac --version
     check_status $?
 fi
@@ -272,24 +269,3 @@ git clone https://github.com/rbsec/sslscan.git && cd sslscan && make static
 check_status $?
 echo "alias sslscan=~/sslscan/sslscan" >> ~/.bashrc && source ~/.bashrc
 cd ~
-
-#######################################################
-# Google Chrome
-#######################################################
-if "${GoogleChrome_would_be_installed}" ; then
-    cd ~
-    sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-    sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    sudo apt update -y
-    sudo apt-get install google-chrome-stable -y
-    check_status $?
-
-    cd ~
-    google_chrome_version=$(google-chrome --version | tr -d 'Google Chrome ')
-    echo ${google_chrome_version}
-    chromedriver_version=${google_chrome_version%.*}.xx
-    # curl -O https://chromedriver.storage.googleapis.com/${chromedriver_version}/chromedriver_linux64.zip
-    # unzip chromedriver_linux64.zip
-    # sudo mv chromedriver /usr/local/bin/
-    # rm chromedriver_linux64.zip
-fi
